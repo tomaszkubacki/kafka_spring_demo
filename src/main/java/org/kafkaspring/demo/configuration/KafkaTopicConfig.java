@@ -15,6 +15,7 @@ public class KafkaTopicConfig {
     public NewTopic jobTopic() {
         return TopicBuilder.name(JOB_TOPIC)
                 .partitions(2)
+                .compact()
                 .replicas(1)
                 .build();
     }
