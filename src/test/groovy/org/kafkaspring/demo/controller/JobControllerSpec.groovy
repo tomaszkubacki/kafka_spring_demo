@@ -6,10 +6,10 @@ import org.springframework.boot.test.context.SpringBootTest
 import spock.lang.Specification
 
 @SpringBootTest
-class MessageControllerSpec extends Specification {
+class JobControllerSpec extends Specification {
 
     @Autowired
-    MessageController greetingController
+    JobController greetingController
 
     def "context test"() {
         expect:
