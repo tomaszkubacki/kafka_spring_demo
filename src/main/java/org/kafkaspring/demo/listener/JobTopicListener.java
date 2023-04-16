@@ -9,8 +9,9 @@ import static org.kafkaspring.demo.configuration.KafkaTopicConfig.JOB_TOPIC;
 @Component
 @Slf4j
 public class JobTopicListener {
+    public static final String GROUP_ID = "my-app";
 
-    @KafkaListener(groupId = "my-app", topics = JOB_TOPIC)
+    @KafkaListener(groupId = GROUP_ID, topics = JOB_TOPIC)
     public void getJobMessage(String data) {
         log.info(data);
     }
