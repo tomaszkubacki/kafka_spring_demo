@@ -9,13 +9,13 @@ import org.springframework.kafka.config.TopicBuilder;
 
 public class KafkaTopicConfig {
 
-    public static final String JOB_TOPIC = "job-topic";
+    public static final String MESSAGE_TOPIC = "message-topic";
 
     @Bean
-    public NewTopic jobTopic() {
-        return TopicBuilder.name(JOB_TOPIC)
+    public NewTopic messageTopic() {
+        return TopicBuilder.name(MESSAGE_TOPIC)
                 .partitions(2)
-                .compact()
+//                .compact()  // how many brokers should have topic replica ?
                 .replicas(1)
                 .build();
     }

@@ -1,0 +1,58 @@
+<!--suppress ALL -->
+<html lang="pl">
+<head>
+    <title>Kafka Spring demo</title>
+    <link rel="stylesheet" href="css/pico.min.css">
+</head>
+<body>
+<main class="container">
+    <h1>Kafka spring demo</h1>
+    <form onsubmit="handleSubmit(event)">
+        <label for="topic-input">topic:</label>
+        <input id="topic-input" type="text" value="job-topic"/>
+
+        <label for="partition-input">partition:</label>
+        <input id="partition-input" type="number" value=""/>
+
+        <label for="key-input">key:</label>
+        <input id="key-input" type="text" value="key-A"/>
+
+        <label for="value-input">value:</label>
+        <input id="value-input" type="text" value="a b c"/>
+
+        <button>Button</button>
+    </form>
+    <a href="/swagger-ui/index.html">Swagger</a>
+
+
+</main>
+
+
+<script>
+    function publishMessage(message) {
+        console.log("publishing message", message)
+        fetch("/api/message", {
+            method: "POST",
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(message)
+        }).then(res => {
+            console.log("Request complete! response:", res);
+        });
+    }
+
+    function handleSubmit(evt) {
+        evt.preventDefault();
+        const partition = evt.target["partition-input"].value
+
+        const message = {
+            topic: evt.target["topic-input"].value,
+            partition: partition !== '' ? parseInt(partition) : null,
+            key: evt.target["key-input"].value,
+            value: evt.target["value-input"].value,
+        }
+        publishMessage(message)
+    }
+
+</script>
+</body>
+</html>
