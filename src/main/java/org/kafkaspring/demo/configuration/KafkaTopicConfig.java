@@ -15,8 +15,8 @@ public class KafkaTopicConfig {
     public NewTopic messageTopic() {
         return TopicBuilder.name(MESSAGE_TOPIC)
                 .partitions(2)
-//                .compact()  // how many brokers should have topic replica ?
-                .replicas(1)
+//                .compact()
+                .replicas(1) // how many brokers should have topic replica ?
                 .build();
     }
 

@@ -2,6 +2,13 @@
 
 Demo usage of Kafka in Spring application
 
+### Run Kafka Cluster in docker (optional)
+Run Kafka in docker
+
+```shell
+docker-compose up -d
+```
+or update kafka connection info in: [application.yml](src/main/resources/application.yml)
 ### How to run
 Run in the terminal:
 ```shell
