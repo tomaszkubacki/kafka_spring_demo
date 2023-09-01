@@ -15,7 +15,7 @@ public class MessageController {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     @PostMapping("/message")
-    public String publishJob(@RequestBody Message message) {
+    public String publishMessage(@RequestBody Message message) {
         String key = message.key() != null ? message.key() : "";
         if (message.partition() != null) {
             kafkaTemplate.send(MESSAGE_TOPIC, message.partition(), key, message.value());
