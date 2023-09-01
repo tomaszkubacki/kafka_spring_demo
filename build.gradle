@@ -12,6 +12,9 @@ sourceCompatibility = '17'
 
 repositories {
 	mavenCentral()
+	maven {
+		url "https://packages.confluent.io/maven/"
+	}
 }
 
 configurations {
@@ -31,7 +34,7 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	implementation 'org.apache.kafka:kafka-streams'
 	implementation 'org.springframework.kafka:spring-kafka'
-	implementation 'io.confluent:kafka-avro-serializer:7.4.0'
+	implementation group: 'io.confluent', name: 'kafka-avro-serializer', version: '7.4.0'
 
 
 	testImplementation platform("org.spockframework:spock-bom:2.4-M1-groovy-4.0")
