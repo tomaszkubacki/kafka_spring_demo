@@ -31,8 +31,11 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
   schema-registry:
     image: confluentinc/cp-schema-registry
+    container_name: schema-registry
     depends_on:
       - broker
+    ports:
+      - "8085:8085"
     environment:
       SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: 'PLAINTEXT://broker:9092'
       SCHEMA_REGISTRY_HOST_NAME: 'schema-registry'
