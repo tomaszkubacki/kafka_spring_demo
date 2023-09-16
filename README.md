@@ -14,7 +14,4 @@ Run in the terminal:
 ```shell
 ./gradlew bootRun
 ```
-
-then open browser at [http://localhost:9988](http://localhost:9988)
-
-or open swagger UI at [openapi link](http://localhost:9988/swagger-ui/index.html)
+open swagger UI at [openapi link](http://localhost:9988/swagger-ui/index.html)
