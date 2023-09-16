@@ -3,6 +3,7 @@ package org.kafkaspring.demo.controller;
 import lombok.RequiredArgsConstructor;
 import org.kafkaspring.demo.dto.CreateUser;
 import org.kafkaspring.demo.dto.UserAdded;
+import org.kafkaspring.demo.service.UserService;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,8 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.UUID;
 
-import static java.time.LocalDateTime.now;
-import static org.kafkaspring.demo.config.Topics.USER_FCT_USER_ADDED;
+
 
 
 @RestController
@@ -23,13 +23,12 @@ public class UserController {
     private final KafkaTemplate<String, String> kafkaTemplate;
 
     private final KafkaTemplate<String, UserAdded> userAddedTemplate;
+    private final UserService userService;
 
 
     @PostMapping()
     public UUID publishMessage(@RequestBody CreateUser createUser) {
-        var userAdded = new UserAdded(UUID.randomUUID(), createUser.userName(), now());
-        userAddedTemplate.send(USER_FCT_USER_ADDED, userAdded.id().toString(), userAdded);
-        return userAdded.id();
+        return userService.addUser(createUser);
     }
 
 
