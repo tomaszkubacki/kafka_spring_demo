@@ -1,7 +1,7 @@
-## terraform topic management
+## Terraform topic management
 
-Terraform is universal tool to do resource management. 
-Terraform has Kafka plugin to manage topics. 
+Terraform is a universal tool to do resource management. 
+Terraform has a plugin to manage Kafka topics. 
 [main.ft](main.tf) contains our topic management.
 
 Before we start we need to initialize terraform  state by invoking:
