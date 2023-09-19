@@ -9,6 +9,18 @@ Run Kafka in docker
 docker-compose up -d
 ```
 or update kafka connection info in: [application.yml](src/main/resources/application.yml)
+
+### Prepare Kafka topics
+
+After cluster is up, prepare Kafka topics. 
+From the project root do:
+```shell
+cd infra
+terraform init
+terraform apply 
+```
+see [infra/README.md](infra/README.md) for details 
+
 ### How to run
 Run in the terminal:
 ```shell
