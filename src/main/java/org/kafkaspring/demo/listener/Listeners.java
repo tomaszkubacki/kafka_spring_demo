@@ -9,7 +9,7 @@ import static org.kafkaspring.demo.config.Topics.USER_FCT_USER_ADDED;
 
 @Component
 @Slf4j
-public class MessageTopicListener {
+public class Listeners {
     public static final String GROUP_ID = "my-app";
 
     @KafkaListener(groupId = GROUP_ID, topics = USER_FCT_USER_ADDED)

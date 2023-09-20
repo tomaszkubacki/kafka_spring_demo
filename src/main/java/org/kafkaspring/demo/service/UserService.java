@@ -1,5 +1,8 @@
 package org.kafkaspring.demo.service;
 
+import org.apache.avro.Schema;
+import org.apache.avro.generic.GenericData;
+import org.apache.avro.generic.GenericRecord;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
@@ -17,7 +20,10 @@ import static org.kafkaspring.demo.config.Topics.USER_FCT_USER_ADDED;
 @Service
 public class UserService {
 
-    public UUID addUser(CreateUser createUser) {
+    private KafkaAvroSerializer avroProducer;
+
+
+    public UUID publishUserAddedInJson(CreateUser createUser) {
         var userAdded = new UserAdded(UUID.randomUUID(), createUser.userName(), now());
         Producer<String, UserAdded> producer = getUserAddedProducer();
         String topic = USER_FCT_USER_ADDED;
@@ -27,6 +33,24 @@ public class UserService {
         producer.close();
         return userAdded.id();
     }
+// https://github.com/confluentinc/examples/blob/7.5.0-post/clients/avro/src/main/java/io/confluent/examples/clients/basicavro/ProducerExample.java
+//    public String publishAvroMessage(){
+//        String key = "key1";
+//        String userSchema = """
+//                    {
+//                      "type":"record",
+//                      "name":"user",
+//                      "fields": [ {"name":"Alfred", "type":"string"},{"surname":"Tarski","type":"string"}]
+//                    }
+//                """;
+//        Schema.Parser parser = new Schema.Parser();
+//        Schema schema = parser.parse(userSchema);
+//        GenericRecord avroRecord = new GenericData.Record(schema);
+//        avroRecord.put("f1", "f1");
+//        avroRecord.put("f2", "f2");
+//        avroKafkaTemplate.send(MESSAGE_TOPIC, avroRecord);
+//        return String.format("publishing on topic %s on key %s data: %s", MESSAGE_TOPIC, "key", avroRecord);
+//    }
 
     private static Producer<String, UserAdded> getUserAddedProducer() {
         Properties props = new Properties();
@@ -39,5 +63,7 @@ public class UserService {
 
         return new KafkaProducer<>(props);
     }
+
+
 
 }
