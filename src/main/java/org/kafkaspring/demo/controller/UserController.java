@@ -30,10 +30,4 @@ public class UserController {
         return userService.publishUserAddedInJson(createUser);
     }
 
-
-    @PostMapping("/avro-message")
-    public String publishAvroMessage(@RequestBody CreateUser createUser) {
-
-    }
-
 }
