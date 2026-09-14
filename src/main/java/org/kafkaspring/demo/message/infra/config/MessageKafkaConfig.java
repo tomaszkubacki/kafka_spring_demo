@@ -11,7 +11,7 @@ public class MessageKafkaConfig {
 
     @Bean
     public NewTopic messageReceivedTopic() {
-        return TopicBuilder.name("message-received")
+        return TopicBuilder.name("messages")
                 .partitions(6)
                 .replicas(1)
                 .build();

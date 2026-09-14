@@ -1,4 +1,4 @@
 package org.kafkaspring.demo.customer.domain;
 
-public record Customer(String name, String email) {
+public record Customer(long id, String name, String email) {
 }
