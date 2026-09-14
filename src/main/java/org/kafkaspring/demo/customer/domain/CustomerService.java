@@ -31,7 +31,6 @@ public class CustomerService {
         var customer = customerRepository.save(new CustomerEntity(null, name, email));
         applicationEventPublisher.publishEvent(new CustomerCreated(customer.getId(), customer.getName(), customer.getEmail()));
         return customer.getId();
-
     }
 
 }
