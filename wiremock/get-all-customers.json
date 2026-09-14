@@ -1,0 +1,35 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/customers"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": [
+      {
+        "id": 1,
+        "firstName": "Jan",
+        "lastName": "Kowalski",
+        "email": "jan.kowalski@example.com",
+        "status": "ACTIVE"
+      },
+      {
+        "id": 2,
+        "firstName": "Anna",
+        "lastName": "Nowak",
+        "email": "anna.nowak@example.com",
+        "status": "ACTIVE"
+      },
+      {
+        "id": 3,
+        "firstName": "Piotr",
+        "lastName": "Wiśniewski",
+        "email": "piotr.wisniewski@example.com",
+        "status": "INACTIVE"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPattern": "/api/customers/([0-9]+)"
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {
+      "id": "{{request.path.[2]}}",
+      "firstName": "Jan",
+      "lastName": "Kowalski",
+      "email": "jan.kowalski@example.com",
+      "status": "ACTIVE",
+      "createdAt": "2024-01-15T10:30:00Z"
+    },
+    "transformers": ["response-template"]
+  }
+}

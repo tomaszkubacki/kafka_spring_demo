@@ -1,0 +1,17 @@
+{
+  "priority": 1,
+  "request": {
+    "method": "GET",
+    "url": "/api/customers/999"
+  },
+  "response": {
+    "status": 404,
+    "headers": {
+      "Content-Type": "application/json; charset=utf-8"
+    },
+    "jsonBody": {
+      "errorCode": "CUSTOMER_NOT_FOUND",
+      "message": "Klient o podanym ID 999 nie istnieje."
+    }
+  }
+}
